@@ -26,3 +26,4 @@ private fun doToast(context: Context, msg: String, length: Int) {
         }
     }
 }
+
