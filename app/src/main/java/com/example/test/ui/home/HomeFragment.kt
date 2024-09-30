@@ -23,7 +23,14 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
             navToPlay()
         }.setScale(0.8f)
         PushDownAnim.setPushDownAnimTo(binding.btnAddCoin).setOnClickListener {
-
+        }.setScale(0.8f)
+        PushDownAnim.setPushDownAnimTo(binding.btnSound).setOnClickListener {
+        }.setScale(0.8f)
+        PushDownAnim.setPushDownAnimTo(binding.btnInfo).setOnClickListener {
+        }.setScale(0.8f)
+        PushDownAnim.setPushDownAnimTo(binding.btnEmail).setOnClickListener {
+        }.setScale(0.8f)
+        PushDownAnim.setPushDownAnimTo(binding.btnUser).setOnClickListener {
         }.setScale(0.8f)
     }
 

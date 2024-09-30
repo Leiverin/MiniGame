@@ -34,7 +34,7 @@
             android:id="@+id/tvLevelCurrent"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:textColor="#0000ff"
+            android:textColor="@color/color_0000ff"
             app:layout_constraintStart_toStartOf="@+id/imgBgScore"
             app:layout_constraintBottom_toBottomOf="@+id/imgBgScore"
             app:layout_constraintTop_toTopOf="@id/imgBgScore"
@@ -90,12 +90,14 @@
             android:layout_marginBottom="@dimen/_16sdp"
             >
             <ImageView
+                android:id="@+id/btnSound"
                 android:layout_width="@dimen/_36sdp"
                 android:layout_height="@dimen/_36sdp"
                 android:src="@drawable/ic_sound_on"
                 android:scaleType="fitXY"
                 />
             <ImageView
+                android:id="@+id/btnInfo"
                 android:layout_width="@dimen/_36sdp"
                 android:layout_height="@dimen/_36sdp"
                 android:src="@drawable/ic_info"
@@ -103,6 +105,7 @@
                 android:layout_marginStart="@dimen/_16sdp"
                 />
             <ImageView
+                android:id="@+id/btnEmail"
                 android:layout_width="@dimen/_36sdp"
                 android:layout_height="@dimen/_36sdp"
                 android:src="@drawable/ic_email"
@@ -110,6 +113,7 @@
                 android:layout_marginStart="@dimen/_16sdp"
                 />
             <ImageView
+                android:id="@+id/btnUser"
                 android:layout_width="@dimen/_36sdp"
                 android:layout_height="@dimen/_36sdp"
                 android:src="@drawable/ic_user"
