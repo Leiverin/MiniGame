@@ -2,6 +2,7 @@ package com.example.test.ui.home
 
 import androidx.navigation.fragment.findNavController
 import com.example.test.R
+import com.example.test.data.mmkv.MMKVUtils
 import com.example.test.databinding.FragmentHomeBinding
 import com.example.test.extension.loadImage
 import com.example.test.extension.setBackPressListener
@@ -14,7 +15,12 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
 
     override fun initView() {
         binding.imgHome.loadImage(R.drawable.bg_home)
+        initData()
         initEvents()
+    }
+
+    private fun initData() {
+        binding.tvLevelCurrent.text = MMKVUtils.getListPlayed().size.toString()
     }
 
     private fun initEvents() {

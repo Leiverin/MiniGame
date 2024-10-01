@@ -42,6 +42,7 @@
             />
 
         <TextView
+            android:id="@+id/tvLevelCurrent"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center"
@@ -86,6 +87,22 @@
             app:layout_constraintTop_toTopOf="@id/imgWrapHeader"
             app:layout_constraintBottom_toBottomOf="@id/imgWrapHeader"
             android:layout_marginEnd="@dimen/_12sdp"
+            />
+
+        <TextView
+            android:id="@+id/tvScore"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            tools:text="1"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="@+id/btnRuby"
+            app:layout_constraintStart_toStartOf="@+id/btnRuby"
+            app:layout_constraintBottom_toBottomOf="@+id/btnRuby"
+            app:layout_constraintTop_toTopOf="@id/btnRuby"
+            android:textColor="@color/black"
+            android:fontFamily="@font/inter_medium"
+            android:paddingEnd="@dimen/_4sdp"
             />
 
         <ImageView

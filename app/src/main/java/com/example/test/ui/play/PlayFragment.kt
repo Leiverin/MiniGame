@@ -129,14 +129,17 @@ class PlayFragment: BaseFragment<FragmentPlayBinding>() {
     }
 
     private fun getCurrentLevel(){
+        binding.tvLevelCurrent.text = MMKVUtils.getListPlayed().size.toString()
+        binding.tvScore.text = (MMKVUtils.getListPlayed().size * 12).toString()
         hasResult = false
         val levels = mutableListOf<Level>()
         levels.clear()
         answers.clear()
         offers.clear()
         levels.addAll(DataManager.getInstance().getListAssets(null))
-        currentLevel = (levels.toList() - MMKVUtils.getListPlayed().toSet()).first()
-        currentLevel?.let { level ->
+        levels.removeAll { level1 -> MMKVUtils.getListPlayed().any { level2 -> level1.imgOffer == level2.imgOffer } }
+        currentLevel = levels.first()
+            currentLevel?.let { level ->
             binding.imgGame.loadImage(level.imgOffer)
             offerAdapter.submitList(level.offers)
             answers.addAll(List(level.answers.size){ "" })
