@@ -7,6 +7,7 @@ import com.example.test.databinding.FragmentHomeBinding
 import com.example.test.extension.loadImage
 import com.example.test.extension.setBackPressListener
 import com.example.test.ui.base.BaseFragment
+import com.example.test.utils.exo_sound.ExoPlayer
 import com.example.test.utils.pushdown.PushDownAnim
 
 class HomeFragment: BaseFragment<FragmentHomeBinding>() {
@@ -21,6 +22,20 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
 
     private fun initData() {
         binding.tvLevelCurrent.text = MMKVUtils.getListPlayed().size.toString()
+        context?.let {
+            ExoPlayer.getInstance(it).onStateChanged = { isPlaying ->
+                if(isPlaying){
+                    binding.btnSound.setImageResource(R.drawable.ic_sound_on)
+                }else{
+                    binding.btnSound.setImageResource(R.drawable.ic_sound_off)
+                }
+            }
+            if(ExoPlayer.getInstance(it).isPlaying()){
+                binding.btnSound.setImageResource(R.drawable.ic_sound_on)
+            }else{
+                binding.btnSound.setImageResource(R.drawable.ic_sound_off)
+            }
+        }
     }
 
     private fun initEvents() {
@@ -31,6 +46,13 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
         PushDownAnim.setPushDownAnimTo(binding.btnAddCoin).setOnClickListener {
         }.setScale(0.8f)
         PushDownAnim.setPushDownAnimTo(binding.btnSound).setOnClickListener {
+            context?.let {
+                if (!ExoPlayer.getInstance(it).isPlaying()){
+                    ExoPlayer.getInstance(it).onStart()
+                }else{
+                    ExoPlayer.getInstance(it).onPause()
+                }
+            }
         }.setScale(0.8f)
         PushDownAnim.setPushDownAnimTo(binding.btnInfo).setOnClickListener {
         }.setScale(0.8f)

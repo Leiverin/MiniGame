@@ -25,6 +25,7 @@ class PlayFragment: BaseFragment<FragmentPlayBinding>() {
     private val answerAdapter = AnswerAdapter()
     private val maps = mutableMapOf<Int, String>()
     private var hasResult = false
+    private var canSuggest = true
 
     override fun layoutRes(): Int = R.layout.fragment_play
 
@@ -35,6 +36,7 @@ class PlayFragment: BaseFragment<FragmentPlayBinding>() {
     }
 
     private fun initData() {
+        canSuggest = true
         getCurrentLevel()
         initRvOffer()
         initRvAnswer()
@@ -65,7 +67,41 @@ class PlayFragment: BaseFragment<FragmentPlayBinding>() {
 
         }.setScale(0.9f)
         PushDownAnim.setPushDownAnimTo(binding.btnSuggest).setOnClickListener {
-
+            if (canSuggest){
+                canSuggest = false
+                currentLevel?.let { currentLevel ->
+                    val suggests = currentLevel.answers - answers.toSet()
+                    if (suggests.isNotEmpty()){
+                        val random = suggests.firstOrNull()
+                        random?.let { random ->
+                            val index = answers.indexOfFirst { it == "" }
+                            answers[index] = random
+                            answerAdapter.submitList(answers)
+                            val result = answers.joinToString("")
+                            if (answers.find { it == "" } == null){
+                                if (result == currentLevel.answers.joinToString("")){
+                                    handleWin(result)
+                                }else{
+                                    handleLose()
+                                }
+                            }
+                        }
+                    }else{
+                        val index = answers.indexOfFirst { it == "" }
+                        answers[index] = currentLevel.answers[index]
+                        val result = answers.joinToString("")
+                        if (answers.find { it == "" } == null){
+                            if (result == currentLevel.answers.joinToString("")){
+                                handleWin(result)
+                            }else{
+                                handleLose()
+                            }
+                        }else{}
+                    }
+                }
+            }else{
+                context?.toast("Chỉ được trợ giúp một lần")
+            }
         }.setScale(0.9f)
         offerAdapter.onClickItem = { pos, offer ->
             val index = answers.indexOfFirst { it == "" }
@@ -108,11 +144,13 @@ class PlayFragment: BaseFragment<FragmentPlayBinding>() {
     }
 
     private fun handleLose() {
+        canSuggest = true
         getCurrentLevel()
         context?.toast("Đáp án sai")
     }
 
     private fun handleWin(result: String) {
+        canSuggest = true
         hasResult = true
         context?.showDialogResult(result)
         val list = MMKVUtils.getListPlayed().toMutableList()

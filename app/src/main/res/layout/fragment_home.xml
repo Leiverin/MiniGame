@@ -93,7 +93,7 @@
                 android:id="@+id/btnSound"
                 android:layout_width="@dimen/_36sdp"
                 android:layout_height="@dimen/_36sdp"
-                android:src="@drawable/ic_sound_on"
+                android:src="@drawable/ic_sound_off"
                 android:scaleType="fitXY"
                 />
             <ImageView
