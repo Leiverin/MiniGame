@@ -12,6 +12,16 @@ object MMKVUtils {
         set(value) {
             MMKV.defaultMMKV().encode(MMKVKey.IS_FIRST_OPEN, value)
         }
+    var isEnableMusic: Boolean
+        get() = MMKV.defaultMMKV().decodeBool(MMKVKey.ENABLE_MUSIC, true)
+        set(value) {
+            MMKV.defaultMMKV().encode(MMKVKey.ENABLE_MUSIC, value)
+        }
+    var score: Int
+        get() = MMKV.defaultMMKV().decodeInt(MMKVKey.SCORE, 0)
+        set(value) {
+            MMKV.defaultMMKV().encode(MMKVKey.SCORE, value)
+        }
 
     fun getListPlayed(): List<Level>{
         return MMKV.defaultMMKV().decodeListParcelable(MMKVKey.LIST_PLAYED, listOf()) ?: emptyList()

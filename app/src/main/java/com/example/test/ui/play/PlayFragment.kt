@@ -67,10 +67,11 @@ class PlayFragment: BaseFragment<FragmentPlayBinding>() {
 
         }.setScale(0.9f)
         PushDownAnim.setPushDownAnimTo(binding.btnSuggest).setOnClickListener {
-            if (canSuggest){
-                canSuggest = false
+            if (MMKVUtils.score > 20){
                 currentLevel?.let { currentLevel ->
                     val suggests = currentLevel.answers - answers.toSet()
+                    MMKVUtils.score -= 20
+                    binding.tvScore.text = MMKVUtils.score.toString()
                     if (suggests.isNotEmpty()){
                         val random = suggests.firstOrNull()
                         random?.let { random ->
@@ -100,7 +101,7 @@ class PlayFragment: BaseFragment<FragmentPlayBinding>() {
                     }
                 }
             }else{
-                context?.toast("Chỉ được trợ giúp một lần")
+                context?.toast("Không đủ ruby")
             }
         }.setScale(0.9f)
         offerAdapter.onClickItem = { pos, offer ->
@@ -152,6 +153,8 @@ class PlayFragment: BaseFragment<FragmentPlayBinding>() {
     private fun handleWin(result: String) {
         canSuggest = true
         hasResult = true
+        MMKVUtils.score += 12
+        binding.tvScore.text = MMKVUtils.score.toString()
         context?.showDialogResult(result)
         val list = MMKVUtils.getListPlayed().toMutableList()
         currentLevel?.let {
@@ -168,7 +171,7 @@ class PlayFragment: BaseFragment<FragmentPlayBinding>() {
 
     private fun getCurrentLevel(){
         binding.tvLevelCurrent.text = MMKVUtils.getListPlayed().size.toString()
-        binding.tvScore.text = (MMKVUtils.getListPlayed().size * 12).toString()
+        binding.tvScore.text = MMKVUtils.score.toString()
         hasResult = false
         val levels = mutableListOf<Level>()
         levels.clear()

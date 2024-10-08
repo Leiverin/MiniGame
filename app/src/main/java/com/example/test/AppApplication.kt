@@ -2,9 +2,11 @@ package com.example.test
 
 import android.app.Application
 import android.content.Context
+import android.net.Uri
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
+import com.example.test.data.mmkv.MMKVUtils
 import com.example.test.utils.exo_sound.ExoPlayer
 import com.tencent.mmkv.MMKV
 
@@ -15,6 +17,7 @@ class AppApplication: Application() {
         ProcessLifecycleOwner.get().lifecycle.addObserver(AppLifecycleListener(this))
         MMKV.initialize(this)
         ExoPlayer.getInstance(this).initPlayer()
+        ExoPlayer.getInstance(this).setMediaSource(Uri.parse("asset:///musics/bg_music.mp3"), MMKVUtils.isEnableMusic, true)
     }
 }
 

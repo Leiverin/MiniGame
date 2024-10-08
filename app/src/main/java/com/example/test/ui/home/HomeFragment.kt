@@ -48,8 +48,10 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
         PushDownAnim.setPushDownAnimTo(binding.btnSound).setOnClickListener {
             context?.let {
                 if (!ExoPlayer.getInstance(it).isPlaying()){
+                    MMKVUtils.isEnableMusic = true
                     ExoPlayer.getInstance(it).onStart()
                 }else{
+                    MMKVUtils.isEnableMusic = false
                     ExoPlayer.getInstance(it).onPause()
                 }
             }
