@@ -15,7 +15,9 @@ class AppApplication: Application() {
     override fun onCreate() {
         super.onCreate()
         ProcessLifecycleOwner.get().lifecycle.addObserver(AppLifecycleListener(this))
+
         MMKV.initialize(this)
+
         ExoPlayer.getInstance(this).initPlayer()
         ExoPlayer.getInstance(this).setMediaSource(Uri.parse("asset:///musics/bg_music.mp3"), MMKVUtils.isEnableMusic, true)
     }

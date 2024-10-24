@@ -17,6 +17,7 @@ class SplashFragment: BaseFragment<FragmentSplashBinding>() {
     }
 
     private fun moveToHome() {
+        // Xu ly sau 3 giay thi cho chuyen vao man home
         binding.progress.setMax(3000)
         object : CountDownTimer(3000, 1){
             override fun onTick(millisUntilFinished: Long) {
@@ -29,6 +30,7 @@ class SplashFragment: BaseFragment<FragmentSplashBinding>() {
     }
 
     private fun navToHome() {
+        // Doan nay xu ly vao man home
         val directions = SplashFragmentDirections.actionSplashFragmentToHomeFragment()
         findNavController().navigate(directions)
     }

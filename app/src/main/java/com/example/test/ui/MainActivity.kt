@@ -16,6 +16,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>() {
     }
 
     private fun setUpNav() {
+        // Set up de cho vao man splash dau tien
         val navHostFragment = supportFragmentManager.findFragmentById(binding.fcvMain.id) as NavHostFragment
         val inflater = navHostFragment.navController.navInflater
         val graph = inflater.inflate(R.navigation.main_nav)

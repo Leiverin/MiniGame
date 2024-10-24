@@ -112,14 +112,6 @@
                 android:scaleType="fitXY"
                 android:layout_marginStart="@dimen/_16sdp"
                 />
-            <ImageView
-                android:id="@+id/btnUser"
-                android:layout_width="@dimen/_36sdp"
-                android:layout_height="@dimen/_36sdp"
-                android:src="@drawable/ic_user"
-                android:scaleType="fitXY"
-                android:layout_marginStart="@dimen/_16sdp"
-                />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
