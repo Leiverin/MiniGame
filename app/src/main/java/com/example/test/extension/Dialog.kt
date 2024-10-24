@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.WindowManager
 import com.example.test.R
+import com.example.test.databinding.DialogIntroBinding
 import com.example.test.databinding.DialogResultBinding
 
 private var dialogResult: Dialog? = null
@@ -21,6 +22,23 @@ fun Context.showDialogResult(text: String){
             setLayout(1f)
             binding.tvResult.text = text
             binding.btnAgain.setPreventDoubleClick {
+                dismissDialogLoading()
+            }
+            setCancelable(false)
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            show()
+        }
+    }
+}
+
+fun Context?.showDialogIntroduction(){
+    this?.let {
+        dialogResult = Dialog(this)
+        val binding = DialogIntroBinding.inflate(LayoutInflater.from(this))
+        dialogResult?.apply {
+            setContentView(binding.root)
+            setLayout(1f)
+            binding.btnOk.setPreventDoubleClick {
                 dismissDialogLoading()
             }
             setCancelable(false)

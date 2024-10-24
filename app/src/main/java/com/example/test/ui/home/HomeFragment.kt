@@ -6,6 +6,7 @@ import com.example.test.data.mmkv.MMKVUtils
 import com.example.test.databinding.FragmentHomeBinding
 import com.example.test.extension.loadImage
 import com.example.test.extension.setBackPressListener
+import com.example.test.extension.showDialogIntroduction
 import com.example.test.ui.base.BaseFragment
 import com.example.test.utils.exo_sound.ExoPlayer
 import com.example.test.utils.pushdown.PushDownAnim
@@ -57,8 +58,10 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
             }
         }.setScale(0.8f)
         PushDownAnim.setPushDownAnimTo(binding.btnInfo).setOnClickListener {
+            context?.showDialogIntroduction()
         }.setScale(0.8f)
         PushDownAnim.setPushDownAnimTo(binding.btnEmail).setOnClickListener {
+
         }.setScale(0.8f)
         PushDownAnim.setPushDownAnimTo(binding.btnUser).setOnClickListener {
         }.setScale(0.8f)
