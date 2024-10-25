@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_item_earn_ruby"
+    android:padding="@dimen/_8sdp"
+    android:layout_marginTop="@dimen/_8sdp"
+    >
+
+    <ImageView
+        android:id="@+id/imgItem"
+        android:layout_width="@dimen/_62sdp"
+        android:layout_height="@dimen/_62sdp"
+        android:src="@drawable/ic_ruby_earn"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_toStartOf="@+id/textView2"
+        android:layout_toEndOf="@+id/imgItem"
+        android:gravity="center|start"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_medium"
+            android:text="Qua màn 10"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sdp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_6sdp"
+            >
+
+            <TextView
+                android:id="@+id/tvContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTitle"
+                android:layout_alignStart="@+id/tvTitle"
+                android:fontFamily="@font/inter_bold"
+                android:text="+12"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp" />
+
+            <ImageView
+                android:id="@+id/imgRuby"
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="@dimen/_16sdp"
+                android:src="@drawable/ic_ruby_yellow"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btnEarn"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_32sdp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/bg_btn_earn_active"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center"
+        android:text="Nhận"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12sdp" />
+
+        />
+
+</RelativeLayout>

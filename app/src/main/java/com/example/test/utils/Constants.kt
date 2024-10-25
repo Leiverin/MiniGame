@@ -39,11 +39,6 @@ object Constants {
         intent.data = Uri.parse("mailto:")
         intent.putExtra(Intent.EXTRA_SUBJECT, subject)
 
-        intent.putExtra(
-            Intent.EXTRA_TEXT,
-            body + "\n\n\n" + "DEVICE INFORMATION (Device information is useful for application improvement and development)" + "\n\n" + getDeviceInfo()
-        )
-
         try {
             context.startActivity(intent)
         } catch (e: Exception) {
@@ -54,29 +49,4 @@ object Constants {
         }
     }
 
-    private fun getDeviceInfo(): String {
-        val densityText = when (Resources.getSystem().displayMetrics.densityDpi) {
-            DisplayMetrics.DENSITY_LOW -> "LDPI"
-            DisplayMetrics.DENSITY_MEDIUM -> "MDPI"
-            DisplayMetrics.DENSITY_HIGH -> "HDPI"
-            DisplayMetrics.DENSITY_XHIGH -> "XHDPI"
-            DisplayMetrics.DENSITY_XXHIGH -> "XXHDPI"
-            DisplayMetrics.DENSITY_XXXHIGH -> "XXXHDPI"
-            else -> "HDPI"
-        }
-
-        //TODO: Update android Q
-        val stat = StatFs(Environment.getExternalStorageDirectory().path)
-        var megAvailable = 0L
-        val bytesAvailable: Long
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            bytesAvailable = stat.blockSizeLong * stat.availableBlocksLong
-            megAvailable = bytesAvailable / (1024 * 1024)
-        }
-
-
-        return "Manufacturer ${Build.MANUFACTURER}, Model ${Build.MODEL}," + " ${Locale.getDefault()}, " + "osVer ${Build.VERSION.RELEASE}, Screen ${Resources.getSystem().displayMetrics.widthPixels}x${Resources.getSystem().displayMetrics.heightPixels}, " + "$densityText, Free space ${megAvailable}MB, TimeZone ${
-            TimeZone.getDefault().getDisplayName(false, TimeZone.SHORT)
-        }"
-    }
 }

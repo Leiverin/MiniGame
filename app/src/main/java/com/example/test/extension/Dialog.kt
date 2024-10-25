@@ -37,7 +37,7 @@ fun Context?.showDialogIntroduction(){
         val binding = DialogIntroBinding.inflate(LayoutInflater.from(this))
         dialogResult?.apply {
             setContentView(binding.root)
-            setLayout(1f)
+            setLayoutNormal(0.9f)
             binding.btnOk.setPreventDoubleClick {
                 dismissDialogLoading()
             }
@@ -59,6 +59,15 @@ fun Dialog?.setLayout(mValue: Float){
         val params = window?.attributes
         params?.width = (screenWith * mValue).toInt()
         params?.height = WindowManager.LayoutParams.MATCH_PARENT
+        window?.attributes = params
+    }
+}
+fun Dialog?.setLayoutNormal(mValue: Float){
+    this?.let {
+        val screenWith = Resources.getSystem().displayMetrics.widthPixels
+        val params = window?.attributes
+        params?.width = (screenWith * mValue).toInt()
+        params?.height = WindowManager.LayoutParams.WRAP_CONTENT
         window?.attributes = params
     }
 }

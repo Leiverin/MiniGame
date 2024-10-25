@@ -1,6 +1,7 @@
 package com.example.test.data.mmkv
 
 import com.example.test.data.models.Level
+import com.example.test.data.models.RubyModel
 import com.example.test.extension.decodeListParcelable
 import com.example.test.extension.encodeListParcelable
 import com.tencent.mmkv.MMKV
@@ -28,6 +29,12 @@ object MMKVUtils {
     }
     fun setListPlayed(level: List<Level>){
         MMKV.defaultMMKV().encodeListParcelable(MMKVKey.LIST_PLAYED, level)
+    }
+    fun getListEarned(): List<RubyModel>{
+        return MMKV.defaultMMKV().decodeListParcelable(MMKVKey.LIST_EARNED, listOf()) ?: emptyList()
+    }
+    fun setListEarn(level: List<RubyModel>){
+        MMKV.defaultMMKV().encodeListParcelable(MMKVKey.LIST_EARNED, level)
     }
 
 }

@@ -8,6 +8,7 @@ import com.example.test.extension.loadImage
 import com.example.test.extension.setBackPressListener
 import com.example.test.extension.showDialogIntroduction
 import com.example.test.ui.base.BaseFragment
+import com.example.test.utils.Constants
 import com.example.test.utils.exo_sound.ExoPlayer
 import com.example.test.utils.pushdown.PushDownAnim
 
@@ -67,7 +68,10 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
             context?.showDialogIntroduction()
         }.setScale(0.8f)
         PushDownAnim.setPushDownAnimTo(binding.btnEmail).setOnClickListener {
-
+            context?.let{ context ->
+                val title = "Góp ý cho chúng tôi"
+                Constants.sendEmailMoree(context, arrayOf(EMAIL_FEEDBACK), title, "")
+            }
         }.setScale(0.8f)
 //        PushDownAnim.setPushDownAnimTo(binding.btnUser).setOnClickListener {
 //        }.setScale(0.8f)
@@ -78,4 +82,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
         findNavController().navigate(directions)
     }
 
+    companion object{
+        const val EMAIL_FEEDBACK = ""
+    }
 }
