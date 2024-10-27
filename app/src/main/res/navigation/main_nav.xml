@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_homeFragment_to_playFragment"
             app:destination="@id/playFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_makeRubyFragment"
+            app:destination="@id/makeRubyFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -33,5 +36,11 @@
         android:name="com.example.test.ui.play.PlayFragment"
         android:label="PlayFragment"
         tools:layout="@layout/fragment_play"
+        />
+    <fragment
+        android:id="@+id/makeRubyFragment"
+        android:name="com.example.test.ui.ruby.MakeRubyFragment"
+        android:label="MakeRubyFragment"
+        tools:layout="@layout/fragment_make_ruby"
         />
 </navigation>

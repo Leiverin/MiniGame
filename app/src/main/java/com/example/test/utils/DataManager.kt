@@ -2,6 +2,7 @@ package com.example.test.utils
 
 import android.content.Context
 import com.example.test.data.models.Level
+import com.example.test.data.models.RubyModel
 import com.example.test.extension.removeMimeType
 import com.example.test.extension.removeSpace
 
@@ -40,6 +41,17 @@ class DataManager {
             }
             return instance!!
         }
+
+        fun getListMission() = arrayListOf(
+            RubyModel(1, 3, 12),
+            RubyModel(2, 6, 12),
+            RubyModel(3, 12, 12),
+            RubyModel(4, 15, 12),
+            RubyModel(5, 18, 12),
+            RubyModel(6, 22, 12),
+            RubyModel(7, 26, 12),
+            RubyModel(8, 32, 12),
+        )
 
     }
 

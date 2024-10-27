@@ -50,6 +50,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
         }.setScale(0.8f)
 
         PushDownAnim.setPushDownAnimTo(binding.btnAddCoin).setOnClickListener {
+            navToEarnRuby()
         }.setScale(0.8f)
 
         PushDownAnim.setPushDownAnimTo(binding.btnSound).setOnClickListener {
@@ -81,8 +82,12 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
         val directions = HomeFragmentDirections.actionHomeFragmentToPlayFragment()
         findNavController().navigate(directions)
     }
+    private fun navToEarnRuby(){
+        val directions = HomeFragmentDirections.actionHomeFragmentToMakeRubyFragment()
+        findNavController().navigate(directions)
+    }
 
     companion object{
-        const val EMAIL_FEEDBACK = ""
+        const val EMAIL_FEEDBACK = "ducchienkma@gmail.com"
     }
 }

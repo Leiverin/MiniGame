@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Test</string>
+    <string name="app_name">Đuổi hình bắt chữ</string>
     <string name="string_des_intro">Trong mỗi vòng chơi, bạn sẽ được cung cấp một hình ảnh gợi ý, và nhiệm vụ của bạn là chọn các chữ cái đúng để tạo thành từ hoặc cụm từ phản ánh hình ảnh đó. Không có giới hạn thời gian, vì vậy bạn có thể thư thả suy nghĩ mà không bị áp lực. Mỗi câu trả lời đúng sẽ giúp bạn ghi điểm và nhận thêm ruby. Nếu gặp khó khăn, bạn có thể sử dụng ruby để nhận gợi ý hiển thị một phần đáp án. Trò chơi sẽ tự động lưu lại tiến trình, bao gồm cả điểm số và số ruby bạn đã kiếm được. Hãy cố gắng giải thật nhiều câu đố để phá đảo trò chơi và thi đua cùng bạn bè!</string>
     <string name="you_need_install_gmail">You need install gmail</string>
 </resources>

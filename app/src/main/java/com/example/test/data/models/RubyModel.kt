@@ -8,5 +8,4 @@ data class RubyModel (
     val id: Int,
     val targetLevel: Int,
     val point: Int,
-    val earned: Boolean
 ): Parcelable

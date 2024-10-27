@@ -3,20 +3,19 @@ package com.example.test.ui.ruby.adapters
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.test.R
 import com.example.test.data.mmkv.MMKVUtils
 import com.example.test.data.models.RubyModel
-import com.example.test.databinding.ItemAnswerBinding
 import com.example.test.databinding.ItemEarnRubyBinding
-import com.example.test.databinding.ItemOfferBinding
-import com.example.test.utils.pushdown.PushDownAnim
 
 class EarnRubyAdapter: Adapter<EarnRubyAdapter.EarnRubyViewHolder>() {
 
     private val rubyLevels = mutableListOf<RubyModel>()
     var onClickItem: (Int, RubyModel) -> Unit = { _, _ ->}
+    private val mListPlayed = MMKVUtils.getListPlayed()
 
     fun submitList(list: MutableList<RubyModel>){
         this.rubyLevels.clear()
@@ -32,11 +31,11 @@ class EarnRubyAdapter: Adapter<EarnRubyAdapter.EarnRubyViewHolder>() {
             if (MMKVUtils.getListEarned().contains(model)){
                 binding.btnEarn.text = "Đã nhận"
                 binding.btnEarn.setBackgroundResource(R.drawable.bg_btn_earn_unactive)
-                binding.btnEarn.setTextColor(Color.parseColor("#0000000"))
+                binding.btnEarn.setTextColor(ContextCompat.getColor(binding.btnEarn.context, R.color.black))
             } else {
                 binding.btnEarn.text = "Nhận"
                 binding.btnEarn.setBackgroundResource(R.drawable.bg_btn_earn_active)
-                binding.btnEarn.setTextColor(Color.parseColor("#FFF"))
+                binding.btnEarn.setTextColor(Color.parseColor("#FFFFFF"))
             }
             binding.tvTitle.text = "Vượt qua màn ${model.targetLevel} được nhận"
             binding.tvContent.text = "+${model.point}"

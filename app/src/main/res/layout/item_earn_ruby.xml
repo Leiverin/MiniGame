@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/imgItem"
-        android:layout_width="@dimen/_62sdp"
-        android:layout_height="@dimen/_62sdp"
+        android:layout_width="@dimen/_52sdp"
+        android:layout_height="@dimen/_52sdp"
         android:src="@drawable/ic_ruby_earn"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginStart="@dimen/_12sdp"
-        android:layout_toStartOf="@+id/textView2"
+        android:layout_toStartOf="@+id/btnEarn"
         android:layout_toEndOf="@+id/imgItem"
         android:gravity="center|start"
         android:orientation="vertical">
@@ -34,14 +34,13 @@
             android:fontFamily="@font/inter_medium"
             android:text="Qua màn 10"
             android:textColor="@color/white"
-            android:textSize="@dimen/_16sdp" />
+            android:textSize="@dimen/_12sdp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="@dimen/_6sdp"
-            >
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/tvContent"
@@ -52,17 +51,16 @@
                 android:fontFamily="@font/inter_bold"
                 android:text="+12"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_10sdp" />
 
             <ImageView
                 android:id="@+id/imgRuby"
                 android:layout_width="@dimen/_16sdp"
                 android:layout_height="@dimen/_16sdp"
-                android:src="@drawable/ic_ruby_yellow"
-                android:layout_marginStart="@dimen/_4sdp"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                />
+                android:layout_marginStart="@dimen/_4sdp"
+                android:src="@drawable/ic_ruby_yellow" />
 
         </LinearLayout>
 
