@@ -44,15 +44,18 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
 
     private fun initEvents() {
         setBackPressListener{}
-        // Su kien nhan vao bat dau choi
+
+        // Xử lý sự kiện của nút "chơi ngay"
         PushDownAnim.setPushDownAnimTo(binding.btnPlay).setOnClickListener {
             navToPlay()
         }.setScale(0.8f)
 
+        // Xử lý sự kiện của nút "kiếm ruby"
         PushDownAnim.setPushDownAnimTo(binding.btnAddCoin).setOnClickListener {
             navToEarnRuby()
         }.setScale(0.8f)
 
+        // Xử lý sự kiện của nút âm thanh
         PushDownAnim.setPushDownAnimTo(binding.btnSound).setOnClickListener {
             context?.let {
                 if (!ExoPlayer.getInstance(it).isPlaying()){
@@ -65,15 +68,19 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
             }
         }.setScale(0.8f)
 
+        // Xử lý sự kiện của nút thông tin
         PushDownAnim.setPushDownAnimTo(binding.btnInfo).setOnClickListener {
             context?.showDialogIntroduction()
         }.setScale(0.8f)
+
+        // Xử lý sự kiện của nút email
         PushDownAnim.setPushDownAnimTo(binding.btnEmail).setOnClickListener {
             context?.let{ context ->
                 val title = "Góp ý cho chúng tôi"
                 Constants.sendEmailMoree(context, arrayOf(EMAIL_FEEDBACK), title, "")
             }
         }.setScale(0.8f)
+
 //        PushDownAnim.setPushDownAnimTo(binding.btnUser).setOnClickListener {
 //        }.setScale(0.8f)
     }
@@ -82,6 +89,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
         val directions = HomeFragmentDirections.actionHomeFragmentToPlayFragment()
         findNavController().navigate(directions)
     }
+
     private fun navToEarnRuby(){
         val directions = HomeFragmentDirections.actionHomeFragmentToMakeRubyFragment()
         findNavController().navigate(directions)

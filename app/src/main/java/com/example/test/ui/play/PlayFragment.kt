@@ -54,19 +54,27 @@ class PlayFragment: BaseFragment<FragmentPlayBinding>() {
     }
 
     private fun initEvents() {
+        // Xử lý sự kiện back về vật lý
         setBackPressListener{
             findNavController().popBackStack()
         }
+
+        // Xử lý sự kiện back về
         PushDownAnim.setPushDownAnimTo(binding.btnBack).setOnClickListener {
             findNavController().popBackStack()
         }.setScale(0.9f)
-        PushDownAnim.setPushDownAnimTo(binding.btnRuby).setOnClickListener {
 
-        }.setScale(0.9f)
+        // Xử lý sự kiện share
         PushDownAnim.setPushDownAnimTo(binding.btnShare).setOnClickListener {
-
         }.setScale(0.9f)
+
+        // Xử lý sự kiện của nút gợi ý
         PushDownAnim.setPushDownAnimTo(binding.btnSuggest).setOnClickListener {
+            /**
+             * Một lần gợi ý sẽ sử dụng 20 điểm,
+             * hiện tại đang để > 20 điểm thì mới xử lý
+             * còn nhỏ hơn thì hiện 1 cái thông báo ở dòng 113
+             * */
             if (MMKVUtils.score > 20){
                 currentLevel?.let { currentLevel ->
                     val suggests = currentLevel.answers - answers.toSet()
@@ -104,6 +112,9 @@ class PlayFragment: BaseFragment<FragmentPlayBinding>() {
                 context?.toast("Không đủ ruby")
             }
         }.setScale(0.9f)
+        // Kết thúc xử lý gợi ý
+
+        // Xử lý sự kiện click vào item trên phần gợi ý
         offerAdapter.onClickItem = { pos, offer ->
             val index = answers.indexOfFirst { it == "" }
             if (index >= 0) {
@@ -115,13 +126,17 @@ class PlayFragment: BaseFragment<FragmentPlayBinding>() {
             if (answers.indexOfFirst { it == "" } < 0 && !hasResult){
                 val result = answers.joinToString("")
                 if (result == currentLevel?.answers?.joinToString("")){
+                    // Xử lý thắng
                     handleWin(result)
                 }else{
+                    // Xử lý thua
                     handleLose()
                 }
             }
-
         }
+        // Kết thúc xử lý sự kiện click vào item trên phần gợi ý
+
+        // Xử lý sự kiện click vào item trên phần đáp án
         answerAdapter.onClickItem = { pos, answer ->
             hasResult = false
             var count = answers.count { it == answer }
@@ -142,14 +157,18 @@ class PlayFragment: BaseFragment<FragmentPlayBinding>() {
             answers[pos] = ""
             refresh()
         }
+        // Kết thúc xử lý sự kiện click vào item trên phần đáp án
+
     }
 
+    // Xử lý lúc thua
     private fun handleLose() {
         canSuggest = true
         getCurrentLevel()
         context?.toast("Đáp án sai")
     }
 
+    // Xử lý lúc thắng
     private fun handleWin(result: String) {
         canSuggest = true
         hasResult = true

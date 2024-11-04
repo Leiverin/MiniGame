@@ -75,6 +75,7 @@
             app:layout_constraintTop_toTopOf="@id/imgWrapHeader"
             app:layout_constraintBottom_toBottomOf="@id/imgWrapHeader"
             android:layout_marginEnd="@dimen/_4sdp"
+            android:visibility="invisible"
             />
 
         <ImageView

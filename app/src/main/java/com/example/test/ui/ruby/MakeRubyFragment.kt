@@ -13,6 +13,7 @@ import com.example.test.utils.DataManager
 import com.example.test.utils.pushdown.PushDownAnim
 
 class MakeRubyFragment: BaseFragment<FragmentMakeRubyBinding>() {
+
     private val adapter = EarnRubyAdapter()
 
     override fun layoutRes(): Int = R.layout.fragment_make_ruby
@@ -32,6 +33,8 @@ class MakeRubyFragment: BaseFragment<FragmentMakeRubyBinding>() {
         binding.rvEarn.layoutManager = LinearLayoutManager(context)
         binding.rvEarn.adapter = adapter
         adapter.submitList(DataManager.getListMission())
+
+        // Xử lý nút nhận
         adapter.onClickItem = { _, item ->
             if (MMKVUtils.getListPlayed().size > item.targetLevel) {
                 val mList = MMKVUtils.getListEarned().toMutableList()

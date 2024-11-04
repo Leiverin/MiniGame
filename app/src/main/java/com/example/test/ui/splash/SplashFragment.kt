@@ -21,6 +21,7 @@ class SplashFragment: BaseFragment<FragmentSplashBinding>() {
         binding.progress.setMax(3000)
         object : CountDownTimer(3000, 1){
             override fun onTick(millisUntilFinished: Long) {
+                // Set giá trị cho thanh progress bar
                 binding.progress.setProgress(3000 - millisUntilFinished)
             }
             override fun onFinish() {

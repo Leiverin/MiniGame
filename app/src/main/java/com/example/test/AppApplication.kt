@@ -18,6 +18,7 @@ class AppApplication: Application() {
 
         MMKV.initialize(this)
 
+        // Khởi tạo nhạc
         ExoPlayer.getInstance(this).initPlayer()
         ExoPlayer.getInstance(this).setMediaSource(Uri.parse("asset:///musics/bg_music.mp3"), MMKVUtils.isEnableMusic, true)
     }

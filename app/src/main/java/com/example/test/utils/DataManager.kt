@@ -10,11 +10,14 @@ class DataManager {
 
     private val levels = mutableListOf<Level>()
 
+    // Xử lý lấy hình ảnh ở folder assets
     fun getListAssets(context: Context?): MutableList<Level>{
         if (levels.isNotEmpty()){
             return levels
         }
+        // Tìm tới folder assets
         val assets = context?.resources?.assets?.list("levels")
+        // Đọc hết tất các các ảnh trong assets
         assets?.forEachIndexed { _,  s->
             levels.add(Level(
                 imgOffer = Constants.ASSET_DIRECTORY + s,
